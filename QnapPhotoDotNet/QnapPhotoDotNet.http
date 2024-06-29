@@ -1,0 +1,7 @@
+@QnasPhotoDotNet_HostAddress = http://localhost:5168
+@BaseApi = http://192.168.1.3/photo/api
+
+GET {{BaseApi}}/list.php?t=allMedia&h=1&json=1&c=10&p=1&s=size
+Accept: application/json
+
+###
