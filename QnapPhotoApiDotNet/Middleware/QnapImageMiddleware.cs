@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.Middleware;
+﻿namespace RobGray.QnapPhotoApiDotNet.Middleware;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
@@ -23,7 +23,7 @@ public class QnapImageMiddleware(RequestDelegate nextMiddleware, IHttpClientFact
 		{
 			var targetRequestMessage = CreateTargetMessage(context, targetUri);
 
-			var httpClient = factory.CreateClient(QnapApiClient.HttpClientKey);
+			var httpClient = factory.CreateClient(PhotoStationClient.HttpClientKey);
 			using var responseMessage = await httpClient.SendAsync(targetRequestMessage, HttpCompletionOption.ResponseHeadersRead, context.RequestAborted);
         
 			context.Response.StatusCode = (int)responseMessage.StatusCode;
@@ -96,11 +96,17 @@ public class QnapImageMiddleware(RequestDelegate nextMiddleware, IHttpClientFact
 	private Uri? BuildImageUri(HttpRequest request, string baseUrl)
 	{ 
 		Uri? imageUri = null;
-    
+
 		if (request.Path.StartsWithSegments("/image", out var remainingPath))
 		{
-			var imageId = remainingPath.HasValue ? remainingPath.Value.Remove(0, 1) : string.Empty; // The first character is a "/"
-			imageUri = new Uri($"{baseUrl}/photo/api/thumb.php?s=1&m=disaply&f={imageId}");
+			var imageId = remainingPath.Value!.Remove(0, 1); // The first character is a "/"
+			imageUri = new Uri($"{baseUrl}/photo/api/thumb.php?s=0&m=display&f={imageId}");
+		}
+		
+		if (request.Path.StartsWithSegments("/thumb", out remainingPath))
+		{
+			var imageId = remainingPath.Value!.Remove(0, 1); // The first character is a "/"
+			imageUri = new Uri($"{baseUrl}/photo/api/thumb.php?s=1&m=display&f={imageId}");
 		}
 
 		return imageUri;

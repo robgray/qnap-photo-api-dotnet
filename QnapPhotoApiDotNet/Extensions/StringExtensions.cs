@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.Extensions;
+﻿namespace RobGray.QnapPhotoApiDotNet.Extensions;
 
 using System.Xml.Serialization;
 

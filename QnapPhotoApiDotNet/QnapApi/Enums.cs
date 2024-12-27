@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
+﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi;
 
 public enum MediaType
 {

@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet;
+﻿namespace RobGray.QnapPhotoApiDotNet;
 
 using DelegatingHandlers;
 using Microsoft.AspNetCore.Builder;
@@ -25,7 +25,7 @@ public static class Configuration
         services.TryAddSingleton(TimeProvider.System);
         
         services
-            .AddHttpClient(QnapApiClient.HttpClientKey, (provider, client) =>
+            .AddHttpClient(PhotoStationClient.HttpClientKey, (provider, client) =>
             {
                 var settings = provider.GetRequiredService<IOptionsMonitor<QnapApiOptions>>().CurrentValue;
                 client.BaseAddress = new Uri(settings.BaseUrl);
@@ -36,7 +36,7 @@ public static class Configuration
                 provider.GetRequiredService<IMemoryCache>(),
                 provider.GetRequiredService<TimeProvider>()));
 
-        services.AddScoped<IQnapApiClient, QnapApiClient>();
+        services.AddScoped<IPhotoStationClient, PhotoStationClient>();
         
         return services;
     }

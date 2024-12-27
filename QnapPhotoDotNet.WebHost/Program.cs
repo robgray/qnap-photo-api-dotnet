@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using RobGray.QnapPhotoDotNet;
-using RobGray.QnapPhotoDotNet.QnapApi;
-using RobGray.QnapPhotoDotNet.QnapApi.List;
-using RobGray.QnapPhotoDotNet.QnapApi.ListAlbumPhotos;
-using RobGray.QnapPhotoDotNet.QnapApi.ListAlbums;
+using RobGray.QnapPhotoApiDotNet;
+using RobGray.QnapPhotoApiDotNet.QnapApi;
+using RobGray.QnapPhotoApiDotNet.QnapApi.List;
+using RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbumPhotos;
+using RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbums;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +34,7 @@ app.UseQnapImageMiddleware();
 
 app.UseHttpsRedirection();
 
-app.MapGet("/list/{page:int}", async (int page, [FromServices] IQnapApiClient qnapClient, CancellationToken cancellationToken) =>
+app.MapGet("/list/{page:int}", async (int page, [FromServices] IPhotoStationClient qnapClient, CancellationToken cancellationToken) =>
     {
         var request = new ListRequest
         {
@@ -50,7 +50,7 @@ app.MapGet("/list/{page:int}", async (int page, [FromServices] IQnapApiClient qn
     .WithTags("QnapPhotos")
     .WithOpenApi();
 
-app.MapGet("/list-album-photos/{albumId}/{page:int}", async (string albumId, int page, [FromServices] IQnapApiClient qnapClient, CancellationToken cancellationToken) =>
+app.MapGet("/list-album-photos/{albumId}/{page:int}", async (string albumId, int page, [FromServices] IPhotoStationClient qnapClient, CancellationToken cancellationToken) =>
     {
         var request = new ListAlbumPhotosRequest()
         {
@@ -67,7 +67,7 @@ app.MapGet("/list-album-photos/{albumId}/{page:int}", async (string albumId, int
     .WithTags("QnapPhotos")
     .WithOpenApi();
 
-app.MapGet("/list-album/{page:int}", async (int page, [FromServices] IQnapApiClient qnapClient, CancellationToken cancellationToken) =>
+app.MapGet("/list-album/{page:int}", async (int page, [FromServices] IPhotoStationClient qnapClient, CancellationToken cancellationToken) =>
     {
         var request = new ListAlbumsRequest()
         {

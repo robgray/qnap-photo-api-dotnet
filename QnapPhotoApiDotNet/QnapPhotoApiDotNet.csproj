@@ -16,8 +16,8 @@
         <PackageTags>qnap;images</PackageTags>
         <PackageProjectUrl>https://github.com/robgray/qnap-photo-api-dotnet</PackageProjectUrl>
         
-        <RootNamespace>RobGray.QnapPhotoDotNet</RootNamespace>
-        <AssemblyName>RobGray.QnapPhotoDotNet</AssemblyName>
+        <RootNamespace>RobGray.QnapPhotoApiDotNet</RootNamespace>
+        <AssemblyName>RobGray.QnapPhotoApiDotNet</AssemblyName>
         <Authors>Rob Gray</Authors>
     </PropertyGroup>
     

@@ -1,13 +1,13 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
+﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi;
 
 using System.Net.Http.Json;
 using List;
 using ListAlbumPhotos;
 using ListAlbums;
 
-public class QnapApiClient(IHttpClientFactory httpClientFactory) : IQnapApiClient
+public class PhotoStationClient(IHttpClientFactory httpClientFactory) : IPhotoStationClient
 {
-    public const string HttpClientKey = "QnapClient";
+    public const string HttpClientKey = "QnapPhotoStation";
     public const string AuthCookieName = "NAS_SID";
     
     // Authentication is handled in the AuthenticationHandler,

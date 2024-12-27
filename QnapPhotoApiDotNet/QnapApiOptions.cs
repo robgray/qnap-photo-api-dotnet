@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet;
+﻿namespace RobGray.QnapPhotoApiDotNet;
 
 using System.ComponentModel.DataAnnotations;
 

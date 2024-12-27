@@ -1,8 +1,8 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi.List;
+﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbumPhotos;
 
 using System.Text.Json.Serialization;
 
-public class ListResponse
+public class ListAlbumPhotosResponse
 {
     [JsonPropertyName("status")]
     public string? Status { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi.ListAlbums;
+﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbums;
 
 public class ListAlbumsRequest
 {

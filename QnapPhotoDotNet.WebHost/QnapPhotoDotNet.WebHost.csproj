@@ -25,7 +25,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <ProjectReference Include="..\QnapPhotoDotNet\QnapPhotoDotNet.csproj" />
+      <ProjectReference Include="..\QnapPhotoApiDotNet\QnapPhotoApiDotNet.csproj" />
     </ItemGroup>
 
 </Project>

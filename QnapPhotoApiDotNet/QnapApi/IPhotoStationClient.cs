@@ -1,10 +1,10 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
+﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi;
 
 using List;
 using ListAlbumPhotos;
 using ListAlbums;
 
-public interface IQnapApiClient
+public interface IPhotoStationClient
 {
     public Task<ListResponse?> ListAsync(ListRequest request, CancellationToken cancellationToken);
     

@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.DelegatingHandlers;
+﻿namespace RobGray.QnapPhotoApiDotNet.DelegatingHandlers;
 
 using Extensions;
 using Microsoft.Extensions.Caching.Memory;
@@ -13,7 +13,7 @@ public class AuthenticationHandler(QnapApiOptions qnapApiOptions, ILogger logger
             // If not, can make smaller.
 		
             var loginResponse = await memoryCache.GetOrCreateAsync<LoginResponse?>(
-                QnapApiClient.AuthCookieName,
+                PhotoStationClient.AuthCookieName,
                 async cacheEntry =>
                 {
                     cacheEntry.SetAbsoluteExpiration(timeProvider.GetLocalNow().AddHours(qnapApiOptions.AuthTimeoutInHours));
@@ -48,7 +48,7 @@ public class AuthenticationHandler(QnapApiOptions qnapApiOptions, ILogger logger
 		
         if (loginResponse is not null)
         {
-            request.Headers.Add("Cookie", $"{QnapApiClient.AuthCookieName}={loginResponse.Sid}");
+            request.Headers.Add("Cookie", $"{PhotoStationClient.AuthCookieName}={loginResponse.Sid}");
         }
 
         return await base.SendAsync(request, cancellationToken);
