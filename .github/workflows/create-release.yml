@@ -1,0 +1,40 @@
+name: Build and Create Release (main)
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-beta'
+
+jobs:
+  build:
+    name: Build & Test
+    uses: ./.github/workflows/dotnet.yml
+    
+  deploy:
+    name: Create Draft Release with NuGet Packages
+    needs:
+      - build
+    runs-on: ubuntu-latest
+
+    env:
+      DOTNET_NOLOGO: true      
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Avoid pre-populating the NuGet package cache
+         
+    steps:
+      - name: 'Checkout Code'
+        uses: actions/checkout@v4
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        
+      - name: Create Draft Release
+        shell: pwsh
+        # Can't just use wildcard in this command due to https://github.com/cli/cli/issues/5099 so use Get-Item
+        run: |
+          gh release create --repo "robgray/qnap-photo-api-dotnet" --draft --title "${{ github.ref_name }}" "release-${{ github.ref_name }}" (Get-Item "NuGet Packages/*.nupkg")
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
