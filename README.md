@@ -10,10 +10,18 @@ Provides the following capabilities.
    - `/image/{imageId}` - Full size image
    - `/thumb/{imageId}` - Thumbnail of the supplied image. The size of this thumbnail depends on how thumbnails are processed in your NAS.
 
-## Usage 
-To use:
+## Configuration 
+
 1. Get the nuget package
-2. Install in your web app/api (see below)
+1. Add configuration to your `appsettings.json`.  Username and Password are the credentials you use to login to your nas.
+```csharp
+"QnapApi": {
+    "BaseUrl": "http://nas",
+    "Username": "Rob",
+    "Password": "Y0UrP455w0rd!"
+}
+```
+3. Install in your web app/api (see below)
 
 ```csharp
 // This will register CSharp API client to make the /list calls.
@@ -25,7 +33,7 @@ var app = builder.Build();
 app.UseQnapImageMiddleware();
 ```
 
-## Sample calls
+## Usage
 ```csharp
 
 app.MapGet("/list/{page:int}", async (int page, [FromServices] IPhotoStationClient qnapClient, CancellationToken cancellationToken) =>
