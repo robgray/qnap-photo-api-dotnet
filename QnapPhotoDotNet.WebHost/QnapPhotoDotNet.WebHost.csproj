@@ -7,8 +7,6 @@
         <AssemblyName>RobGray.QnapPhotoDotNet.WebHost</AssemblyName>
         <RootNamespace>RobGray.QnapPhotoDotNet.WebHost</RootNamespace>
         <UserSecretsId>3d3f9f0e-024a-43f7-a28c-7b9eb9bec926</UserSecretsId>
-        
-        <LangVersion>13</LangVersion>
     </PropertyGroup>
     
     <ItemGroup>

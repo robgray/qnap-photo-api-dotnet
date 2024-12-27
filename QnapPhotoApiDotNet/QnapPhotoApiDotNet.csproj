@@ -6,7 +6,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TargetFramework>net8.0</TargetFramework>
-        <LangVersion>13</LangVersion>
         <UserSecretsId>e737414e-ea4b-4b61-9b3c-299ac88f1a4c</UserSecretsId>
     </PropertyGroup>
     
