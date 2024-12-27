@@ -1,4 +1,6 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
+﻿namespace RobGray.QnapPhotoDotNet.QnapApi.List;
+
+using RobGray.QnapPhotoDotNet.QnapApi;
 
 public class ListRequest
 {
@@ -6,7 +8,7 @@ public class ListRequest
     
     public MediaType MediaType { get; set; } = MediaType.All;
 
-    public int PageSize { get; set; } = 100;    // matches the page size of the Qnap Photo App
+    public int PageSize { get; set; } = 100;    // matches the page size of the Qnap PhotoStation App
 
     public int PageNumber { get; set; } = 1;
 
@@ -14,19 +16,18 @@ public class ListRequest
 
     public SortDirection SortDirection { get; set; } = SortDirection.Descending;
 
-    public StarRating? StarRating { get; set; } = null;
+    public StarRating? Rating { get; set; } = null;
     
     public override string ToString()
     {
-        // h: 1 for private collection, 0 = shared.
         var searchParams = $"h={CollectionParam()}&json=1&t={MediaTypeParam()}&sd={SortDirectionParam()}&c={PageSizeParam()}&p={PageNumberParam()}&s={SortParam()}";
-        if (this.StarRating is not null)
+        if (this.Rating is not null)
         {
             searchParams += $"&m={StarRatingParam()}";
         }
 
         return searchParams;
-
+        
         string MediaTypeParam() => this.MediaType switch
         {
             MediaType.Photos => "photos",
@@ -58,50 +59,17 @@ public class ListRequest
             _ => "ASC",
         };
 
-        string StarRatingParam() => this.StarRating switch
+        string StarRatingParam() => this.Rating switch
         {
-            QnapApi.StarRating.One => "20",
-            QnapApi.StarRating.Two => "40",
-            QnapApi.StarRating.Three => "60",
-            QnapApi.StarRating.Four => "80",
-            QnapApi.StarRating.Five => "100",
+            StarRating.One => "20",
+            StarRating.Two => "40",
+            StarRating.Three => "60",
+            StarRating.Four => "80",
+            StarRating.Five => "100",
             _ => "",
         };
     }
 }
 
-public enum MediaType
-{
-    All,
-    Photos,
-    Videos,
-}
 
-public enum Collection
-{
-    Shared = 0,
-    Private = 1,
-};
-
-public enum Sort
-{
-    Size,
-    Rating,
-    DateAdded,
-}
-
-public enum SortDirection
-{
-    Ascending,
-    Descending
-}
-
-public enum StarRating
-{
-    One,
-    Two,
-    Three,
-    Four,
-    Five
-}
 

@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
+﻿namespace RobGray.QnapPhotoDotNet.QnapApi.List;
 
 using System.Text.Json.Serialization;
 
@@ -10,7 +10,8 @@ public class ListResponse
     [JsonPropertyName("photoCount")]
     public int photoCount { get; set; }
     
-    public DataList[]? DataList { get; set; }
+    [JsonPropertyName("DataList")]
+    public DataList[]? Data { get; set; }
     
     [JsonPropertyName("timestamp")]
     public string? Timestamp { get; set; }
@@ -120,4 +121,5 @@ public class FileItem
     
     public string? ImportYearMonthDay { get; set; }
 }
+
 

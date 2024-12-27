@@ -3,6 +3,7 @@
 using Extensions;
 using Microsoft.Extensions.Caching.Memory;
 using QnapApi;
+using QnapApi.Login;
 
 public class AuthenticationHandler(QnapApiOptions qnapApiOptions, ILogger logger, IMemoryCache memoryCache, TimeProvider timeProvider) : DelegatingHandler
 {
