@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Options;
-using RobGray.QnapPhotoDotNet.Core.QnapApi;
+﻿namespace RobGray.QnapPhotoDotNet.Middleware;
 
-namespace RobGray.QnapPhotoDotNet.Infrastructure.Middleware;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using QnapApi;
 
 /// <summary>
 /// Acts as a ReverseProxy to the nas to get the particular image
@@ -37,11 +38,9 @@ public class QnapImageMiddleware(RequestDelegate nextMiddleware, IHttpClientFact
 
 	private HttpRequestMessage CreateTargetMessage(HttpContext context, Uri targetUri)
 	{
-      
 		var requestMessage = new HttpRequestMessage();
 		CopyFromOriginalRequestContentAndHeaders(context, requestMessage);
-      
-		// How do i get the cookie into the request.  
+		
 		requestMessage.RequestUri = targetUri;
 		requestMessage.Headers.Host = targetUri.Host;
 		requestMessage.Method = GetMethod(context.Request.Method);
@@ -100,7 +99,7 @@ public class QnapImageMiddleware(RequestDelegate nextMiddleware, IHttpClientFact
     
 		if (request.Path.StartsWithSegments("/image", out var remainingPath))
 		{
-			var imageId = remainingPath.Value.Remove(0, 1); // The first character is a "/"
+			var imageId = remainingPath.HasValue ? remainingPath.Value.Remove(0, 1) : string.Empty; // The first character is a "/"
 			imageUri = new Uri($"{baseUrl}/photo/api/thumb.php?s=1&m=disaply&f={imageId}");
 		}
 

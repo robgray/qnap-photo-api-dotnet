@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace RobGray.QnapPhotoDotNet;
 
-namespace RobGray.QnapPhotoDotNet;
+using System.ComponentModel.DataAnnotations;
 
 public class QnapApiOptions
 {
@@ -8,11 +8,14 @@ public class QnapApiOptions
     
     [Required]
     [Url]
-    public string BaseUrl { get; set; }
+    public required string BaseUrl { get; init; }
 
     [Required]
-    public string Username { get; set; }
+    public required string Username { get; init; }
     
     [Required]
-    public string Password { get; set; }
+    public required string Password { get; init; }
+    
+    [Required]
+    public required int AuthTimeoutInHours { get; init; }
 }

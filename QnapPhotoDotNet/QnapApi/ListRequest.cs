@@ -1,7 +1,9 @@
-﻿namespace RobGray.QnapPhotoDotNet.Core.QnapApi;
+﻿namespace RobGray.QnapPhotoDotNet.QnapApi;
 
 public class ListRequest
 {
+    public Collection Collection { get; set; } = Collection.Shared;
+    
     public MediaType MediaType { get; set; } = MediaType.All;
 
     public int PageSize { get; set; } = 100;    // matches the page size of the Qnap Photo App
@@ -17,7 +19,7 @@ public class ListRequest
     public override string ToString()
     {
         // h: 1 for private collection, 0 = shared.
-        var searchParams = $"h=1&json=1&t={MediaTypeParam()}&sd={SortDirectionParam()}&c={PageSizeParam()}&p={PageNumberParam()}&s={SortParam()}";
+        var searchParams = $"h={CollectionParam()}&json=1&t={MediaTypeParam()}&sd={SortDirectionParam()}&c={PageSizeParam()}&p={PageNumberParam()}&s={SortParam()}";
         if (this.StarRating is not null)
         {
             searchParams += $"&m={StarRatingParam()}";
@@ -32,6 +34,13 @@ public class ListRequest
             _ => "allMedia",
         };
 
+        string CollectionParam() => this.Collection switch
+        {
+            Collection.Shared => "0",
+            Collection.Private => "1",
+            _ => "0",
+        };
+        
         string PageNumberParam() => $"{this.PageNumber}";
 
         string PageSizeParam() => $"{this.PageSize}";
@@ -40,7 +49,7 @@ public class ListRequest
         {
             Sort.Size => "size",
             Sort.DateAdded => "time",
-            _ => "rating",
+            _ => "time",
         };
         
         string SortDirectionParam() => this.SortDirection switch
@@ -67,6 +76,12 @@ public enum MediaType
     Photos,
     Videos,
 }
+
+public enum Collection
+{
+    Shared = 0,
+    Private = 1,
+};
 
 public enum Sort
 {

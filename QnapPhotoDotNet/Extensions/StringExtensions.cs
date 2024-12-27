@@ -1,17 +1,16 @@
-﻿using System.Xml.Serialization;
+﻿namespace RobGray.QnapPhotoDotNet.Extensions;
 
-namespace RobGray.QnapPhotoDotNet.Infrastructure.Extensions;
+using System.Xml.Serialization;
 
 public static class StringExtensions
 {
-    public static T DeserializeXmLToObject<T>(this string xmlData)
+    public static T? DeserializeXmLToObject<T>(this string xmlData)
     {
-        T returnObject = default(T);
-        if (string.IsNullOrEmpty(xmlData)) return default(T);
+        if (string.IsNullOrEmpty(xmlData)) return default;
 
         var reader = new StringReader(xmlData);
         XmlSerializer serializer = new XmlSerializer(typeof(T));
-        returnObject = (T)serializer.Deserialize(reader);
+        var returnObject = (T)serializer.Deserialize(reader)!;
 
         return returnObject;
     }

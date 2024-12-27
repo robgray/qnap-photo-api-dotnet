@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AssemblyName>RobGray.QnapPhotoDotNet.WebHost</AssemblyName>
+        <RootNamespace>RobGray.QnapPhotoDotNet.WebHost</RootNamespace>
+        <UserSecretsId>3d3f9f0e-024a-43f7-a28c-7b9eb9bec926</UserSecretsId>
+        
+        <LangVersion>13</LangVersion>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Using Include="Serilog.ILogger" Alias="ILogger" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.11" />
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+        <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="System.Drawing.Common" Version="8.0.6" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\QnapPhotoDotNet\QnapPhotoDotNet.csproj" />
+    </ItemGroup>
+
+</Project>
