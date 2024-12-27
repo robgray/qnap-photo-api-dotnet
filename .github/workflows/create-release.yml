@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build & Test
-    uses: ./.github/workflows/dotnet.yml
+    uses: ./.github/workflows/_build.yml
     
   deploy:
     name: Create Draft Release with NuGet Packages
