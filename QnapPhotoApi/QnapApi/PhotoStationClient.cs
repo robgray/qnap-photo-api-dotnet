@@ -42,7 +42,8 @@ public class PhotoStationClient(IHttpClientFactory httpClientFactory) : IPhotoSt
         var response = await httpClient.SendAsync(requestMessage, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<TResult>(cancellationToken);
+        return await response.Content.ReadFromJsonAsync<TResult>(cancellationToken)
+            ?? throw new Exception("Failed to deserialize response");
     }
 
     // To retrieve a particular image we want to call the NAS directly, rather thn
