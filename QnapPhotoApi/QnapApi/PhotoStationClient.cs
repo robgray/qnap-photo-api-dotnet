@@ -1,6 +1,9 @@
 ﻿namespace Ragware.QnapPhotoApi.QnapApi;
 
 using System.Net.Http.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Converters;
 using List;
 using ListAlbumPhotos;
 using ListAlbums;
@@ -42,7 +45,19 @@ public class PhotoStationClient(IHttpClientFactory httpClientFactory) : IPhotoSt
         var response = await httpClient.SendAsync(requestMessage, cancellationToken);
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadFromJsonAsync<TResult>(cancellationToken)
+        JsonSerializerOptions options = new()
+        {
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
+            Converters =
+            {
+                new QnapDateTimeJsonConverter(),
+                new QnapStringArrayJsonConverter(),
+                new QnapDateOnlyJsonConverter(),
+                new QnapStartRatingJsonConverter(),
+            }
+        };
+        
+        return await response.Content.ReadFromJsonAsync<TResult>(options, cancellationToken)
             ?? throw new Exception("Failed to deserialize response");
     }
 

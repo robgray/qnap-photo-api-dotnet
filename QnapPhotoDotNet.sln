@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnapPhotoDotNet.WebHost", "QnapPhotoDotNet.WebHost\QnapPhotoDotNet.WebHost.csproj", "{E88139CA-4DE9-46F9-BA57-18AE555D6B57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnapPhotoApi.WebHost", "QnapPhotoApi.WebHost\QnapPhotoApi.WebHost.csproj", "{E88139CA-4DE9-46F9-BA57-18AE555D6B57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnapPhotoApi", "QnapPhotoApi\QnapPhotoApi.csproj", "{A7ED2A08-D115-4103-A9B6-EA8A765ECB31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QnapPhotoApi.Tests", "QnapPhotoApi.Tests\QnapPhotoApi.Tests.csproj", "{99B1B70D-F605-4FCC-B5E7-0D70478F5945}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{A7ED2A08-D115-4103-A9B6-EA8A765ECB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7ED2A08-D115-4103-A9B6-EA8A765ECB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7ED2A08-D115-4103-A9B6-EA8A765ECB31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99B1B70D-F605-4FCC-B5E7-0D70478F5945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B1B70D-F605-4FCC-B5E7-0D70478F5945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B1B70D-F605-4FCC-B5E7-0D70478F5945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B1B70D-F605-4FCC-B5E7-0D70478F5945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

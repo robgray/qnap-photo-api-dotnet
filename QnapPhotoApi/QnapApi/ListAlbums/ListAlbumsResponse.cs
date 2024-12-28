@@ -15,7 +15,7 @@ public class ListAlbumsResponse
     public KeywordList[] Keywords { get; set; } = [];
     
     [JsonPropertyName("timestamp")]
-    public string Timestamp { get; set; }
+    public DateTime Timestamp { get; set; }
 }
 
 public class DataList
@@ -31,16 +31,16 @@ public class FileItem
     [JsonPropertyName("cAlbumTitle")]
     public string AlbumTitle { get; set; }
     
-    public string DateCreated { get; set; }
+    public DateTime DateCreated { get; set; }
     
-    public string DateModified { get; set; }
+    public DateTime DateModified { get; set; }
     
     [JsonPropertyName("albumType")]
     public string AlbumType { get; set; }
 
-    public string PhotoCount { get; set; }
+    public int PhotoCount { get; set; }
     
-    public string VideoCount { get; set; }
+    public int VideoCount { get; set; }
 }
 
 public class KeywordList

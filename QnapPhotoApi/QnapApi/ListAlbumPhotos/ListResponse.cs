@@ -8,13 +8,13 @@ public class ListAlbumPhotosResponse
     public string? Status { get; set; }
     
     [JsonPropertyName("photoCount")]
-    public int photoCount { get; set; }
+    public int TotalItems { get; set; }
     
     [JsonPropertyName("DataList")]
     public DataList[]? Data { get; set; }
     
     [JsonPropertyName("timestamp")]
-    public string? Timestamp { get; set; }
+    public DateTime? Timestamp { get; set; }
 }
 
 public class DataList
@@ -27,10 +27,10 @@ public class FileItem
     public string? MediaType { get; set; }
     
     [JsonPropertyName("id")]
-    public string? Id { get; set; }
+    public required string Id { get; set; }
     
     [JsonPropertyName("cFileName")]
-    public string? FileName { get; set; }
+    public required string FileName { get; set; }
     
     [JsonPropertyName("cPictureTitle")]
     public string? PictureTitle { get; set; }
@@ -42,7 +42,7 @@ public class FileItem
     public string? Mime { get; set; }
     
     [JsonPropertyName("iFileSize")]
-    public string? FileSize { get; set; }
+    public int? FileSize { get; set; }
     
     [JsonPropertyName("iWidth")]
     public int? Width { get; set; }
@@ -55,15 +55,15 @@ public class FileItem
     public string? YearMonthDay { get; set; }
     
     [JsonPropertyName("dateTime")]
-    public string? DateTime { get; set; }
+    public DateTime? DateTime { get; set; }
     
-    public string? DateCreated { get; set; }
+    public DateTime? DateCreated { get; set; }
     
-    public string? DateModified { get; set; }
+    public DateTime? DateModified { get; set; }
     
-    public string? AddToDbTime { get; set; }
+    public DateTime? AddToDbTime { get; set; }
     
-    public string? LastUpdate { get; set; }
+    public DateTime? LastUpdate { get; set; }
     
     public string? ScannedFlag { get; set; }
     
@@ -104,12 +104,12 @@ public class FileItem
 
     [JsonPropertyName("prefix")]
     public string? Prefix { get; set; }
-    
+
     [JsonPropertyName("keywords")]
-    public string? Keywords { get; set; }
+    public string[] Keywords { get; set; } = [];
     
     [JsonPropertyName("rating")]
-    public string? Rating { get; set; }
+    public StarRating? Rating { get; set; }
     
     [JsonPropertyName("writable")]
     public string? Writable { get; set; }
@@ -119,7 +119,7 @@ public class FileItem
     [JsonPropertyName("uid")]    
     public string? UId { get; set; }
     
-    public string? ImportYearMonthDay { get; set; }
+    public DateOnly ImportYearMonthDay { get; set; }
 }
 
 
