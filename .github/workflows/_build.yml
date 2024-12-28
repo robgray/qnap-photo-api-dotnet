@@ -37,7 +37,7 @@ jobs:
 
     - name: Copy Package to Root
       shell: pwsh
-      run: Get-ChildItem -Path QnapPhotoApi\*\bin\Release\* -Recurse -Include *.nupkg | Copy-Item -Container:$false
+      run: Get-ChildItem -Path *\bin\Release\* -Recurse -Include *.nupkg | Copy-Item -Container:$false
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4

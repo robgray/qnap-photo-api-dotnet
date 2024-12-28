@@ -23,7 +23,7 @@ jobs:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Avoid pre-populating the NuGet package cache
          
     steps:
-      - name: 'Checkout Code'
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Download Artifacts
