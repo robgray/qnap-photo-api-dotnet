@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi;
+﻿namespace Ragware.QnapPhotoApi.QnapApi;
 
 using System.Net.Http.Json;
 using List;

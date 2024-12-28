@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbumPhotos;
+﻿namespace Ragware.QnapPhotoApi.QnapApi.ListAlbumPhotos;
 
 using System.Text.Json.Serialization;
 

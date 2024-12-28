@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using RobGray.QnapPhotoApiDotNet;
-using RobGray.QnapPhotoApiDotNet.QnapApi;
-using RobGray.QnapPhotoApiDotNet.QnapApi.List;
-using RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbumPhotos;
-using RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbums;
+using Ragware.QnapPhotoApi;
+using Ragware.QnapPhotoApi.QnapApi;
+using Ragware.QnapPhotoApi.QnapApi.List;
+using Ragware.QnapPhotoApi.QnapApi.ListAlbumPhotos;
+using Ragware.QnapPhotoApi.QnapApi.ListAlbums;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

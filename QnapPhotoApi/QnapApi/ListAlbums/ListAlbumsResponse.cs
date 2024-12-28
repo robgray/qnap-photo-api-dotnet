@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.ListAlbums;
+﻿namespace Ragware.QnapPhotoApi.QnapApi.ListAlbums;
 
 #nullable disable
 using System.Text.Json.Serialization;

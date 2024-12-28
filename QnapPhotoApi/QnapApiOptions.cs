@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet;
+﻿namespace Ragware.QnapPhotoApi;
 
 using System.ComponentModel.DataAnnotations;
 

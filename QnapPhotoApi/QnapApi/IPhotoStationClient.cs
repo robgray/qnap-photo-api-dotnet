@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi;
+﻿namespace Ragware.QnapPhotoApi.QnapApi;
 
 using List;
 using ListAlbumPhotos;

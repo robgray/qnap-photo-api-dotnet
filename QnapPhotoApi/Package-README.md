@@ -2,10 +2,10 @@
 This is a .NET Web API wrapper around the QNap Photo Station api.
 
 Provides the following capabilities.
-1. `/list` - Get a list of images meeting basic criteria
-   - list images
-   - list albums (smart and normal)
-   - list images within albums
+1. An Api which calls Qnap Photo Station's /list.phtp endpoint to retrieve
+   - all photos or videos (`ListAsync`)
+   - all albums, smart or otherwise (`ListAlbumsAsync`)
+   - all photos within an album (`ListAlbumPhotosAsync`)
 1. Single images - This is middleware, acting as a proxy to PhotoStation on your NAS. It just forwards the response stream.
    - `/image/{imageId}` - Full size image
    - `/thumb/{imageId}` - Thumbnail of the supplied image. The size of this thumbnail depends on how thumbnails are processed in your NAS.

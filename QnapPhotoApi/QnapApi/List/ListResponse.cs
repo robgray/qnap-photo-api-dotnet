@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.List;
+﻿namespace Ragware.QnapPhotoApi.QnapApi.List;
 
 using System.Text.Json.Serialization;
 

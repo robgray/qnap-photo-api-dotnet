@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <TargetFramework>net8.0</TargetFramework>
@@ -11,12 +10,13 @@
     
     <PropertyGroup>
         <!-- Publish the repository URL in the built .nupkg (in the NuSpec <Repository> element) -->
+        <PackageId>Ragware.QnapPhotoApi</PackageId>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <PackageTags>qnap;images</PackageTags>
+        <PackageTags>qnap api</PackageTags>
         <PackageProjectUrl>https://github.com/robgray/qnap-photo-api-dotnet</PackageProjectUrl>
         <PackageReadmeFile>Package-README.md</PackageReadmeFile>
-        <RootNamespace>RobGray.QnapPhotoApiDotNet</RootNamespace>
-        <AssemblyName>RobGray.QnapPhotoApiDotNet</AssemblyName>
+        <RootNamespace>Ragware.QnapPhotoApi</RootNamespace>
+        <AssemblyName>Ragware.QnapPhotoApi</AssemblyName>
         <Authors>Rob Gray</Authors>
     </PropertyGroup>
 

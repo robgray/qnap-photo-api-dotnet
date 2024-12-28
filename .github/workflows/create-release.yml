@@ -5,12 +5,13 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
       - '[0-9]+.[0-9]+.[0-9]+-beta'
+  workflow_dispatch:
 
 jobs:
   build:
     name: Build & Test
     uses: ./.github/workflows/_build.yml
-    
+        
   deploy:
     name: Create Draft Release with NuGet Packages
     needs:
@@ -35,6 +36,6 @@ jobs:
         shell: pwsh
         # Can't just use wildcard in this command due to https://github.com/cli/cli/issues/5099 so use Get-Item
         run: |
-          gh release create --repo "robgray/qnap-photo-api-dotnet" --draft --title "${{ github.ref_name }}" "release-${{ github.ref_name }}" (Get-Item "NuGet Packages/*.nupkg")
+          gh release create --repo "robgray/qnap-photo-api-dotnet" --draft --title "${{ github.ref_name }}" (Get-Item "NuGet Packages/*.nupkg")
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

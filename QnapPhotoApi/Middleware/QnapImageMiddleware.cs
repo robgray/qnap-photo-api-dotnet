@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.Middleware;
+﻿namespace Ragware.QnapPhotoApi.Middleware;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;

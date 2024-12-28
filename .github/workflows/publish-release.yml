@@ -1,0 +1,33 @@
+name:  Publish Ragware Qnap Photo API to NuGet
+
+on:
+  release:
+    types: [published]      
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Publish Package
+    runs-on: ubuntu-latest
+        
+    env:
+      DOTNET_NOLOGO: true      
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Avoid pre-populating the NuGet package cache
+         
+    steps:
+      - name: 'Check Tag Value'
+        run: echo ${{ github.event.release.tag_name }}
+        
+      - uses: robinraju/release-downloader@v1.10
+        name: 'Download Package from Release'
+        with:
+          repository: 'robgray/qnap-photo-api-dotnet'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: '${{ github.event.release.tag_name }}'
+          fileName: '*'
+          tarBall: false
+          zipBall: false
+
+      - name: 'Upload to NuGet'
+        shell: pwsh
+        run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }}

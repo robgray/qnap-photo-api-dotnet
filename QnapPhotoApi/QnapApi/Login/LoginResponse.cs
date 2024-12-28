@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.QnapApi.Login;
+﻿namespace Ragware.QnapPhotoApi.QnapApi.Login;
 
 using System.Xml.Serialization;
 

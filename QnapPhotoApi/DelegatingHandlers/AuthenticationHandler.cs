@@ -1,4 +1,4 @@
-﻿namespace RobGray.QnapPhotoApiDotNet.DelegatingHandlers;
+﻿namespace Ragware.QnapPhotoApi.DelegatingHandlers;
 
 using Extensions;
 using Microsoft.Extensions.Caching.Memory;
